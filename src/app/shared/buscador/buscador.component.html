@@ -1,0 +1,39 @@
+<div class="md-form">
+  <input mdbInputDirective type="text" id="form1" class="form-control" [(ngModel)]="text">
+  <label for="form1" class="">Example label</label>
+</div>
+<button mdbBtn type="button" color="primary" rounded="true" mdbWavesEffect (click)="find()">Buscar</button>
+<div class="row">
+  <div class="col-md-3" *ngFor="let item of list">
+    <!--Card-->
+    <mdb-card cascade="true" wider="true">
+      <!--Card image-->
+      <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+        <mdb-card-img src="{{item.imagen}}"></mdb-card-img>
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+      <!--/Card image-->
+      <mdb-card-body cascade="true" class="text-center">
+        <!--Card content-->
+        <!--Title-->
+        <h4 class="card-title">
+          <strong>            {{item.precio}}
+       
+</strong>
+        </h4>
+        <mdb-card-text>
+          {{item.titulo}}
+        </mdb-card-text>
+        <!--Linkedin-->
+        <a class="px-2 icons-sm li-ic" href="{{item.enlace_informacion}}" >
+                          <mdb-card-img *ngIf="item.cadena == 'HEB'" src="assets/heb.png"></mdb-card-img>
+   <mdb-card-img *ngIf="item.cadena == 'Soriana'" src="assets/soriana.png"></mdb-card-img>
+        </a>
+      </mdb-card-body>
+      <!--/.Card content-->
+    </mdb-card>
+    <!--/.Card-->
+  </div>
+</div>
