@@ -4,7 +4,7 @@
 </div>
 <button mdbBtn type="button" color="primary" rounded="true" mdbWavesEffect (click)="find()">Buscar</button>
 <div class="row">
-  <div class="col-md-3" *ngFor="let item of list">
+  <div class="col-md-2" *ngFor="let item of list | order">
     <!--Card-->
     <mdb-card cascade="true" wider="true">
       <!--Card image-->
@@ -30,6 +30,8 @@
         <a class="px-2 icons-sm li-ic" href="{{item.enlace_informacion}}" >
                           <mdb-card-img *ngIf="item.cadena == 'HEB'" src="assets/heb.png"></mdb-card-img>
    <mdb-card-img *ngIf="item.cadena == 'Soriana'" src="assets/soriana.png"></mdb-card-img>
+     <mdb-card-img *ngIf="item.cadena == 'liverpool'" src="assets/liverpool.png"></mdb-card-img>
+       <mdb-card-img *ngIf="item.cadena == 'sears'" src="assets/sears.jpeg"></mdb-card-img>
         </a>
       </mdb-card-body>
       <!--/.Card content-->

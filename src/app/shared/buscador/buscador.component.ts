@@ -8,31 +8,62 @@ import { SearchService } from './search.service';
 })
 export class BuscadorComponent implements OnInit {
 
-	public text: string;
-	public list: any[]= [];
+  public text: string;
+  public list: any[] = [];
+  public cadenas: string[] = ['soriana', 'heb', 'liverpool', 'sears'];
 
-  constructor(private searcher: SearchService) { }
+
+  constructor(private searcher: SearchService) {}
 
   ngOnInit() {
+
   }
 
-  public find(){
+  public find() {
+    this.list=[];
 
-  	this.list=[];
+    this.getList(0);
 
-  	this.searcher.search('soriana', this.text, 0).subscribe(data=>{
-  		console.log(data);
-  		for(let r of data.results){
-  			this.list.push(r);
-  		}
-  	});
 
-  	  	this.searcher.search('heb', this.text, 0).subscribe(data=>{
-  		for(let r of data.results){
-  			this.list.push(r);
-  		}
-  	});
+  }
 
+
+  public getList(index: number) {
+    this.searcher.search(this.cadenas[index], this.text, 1).subscribe(data => {
+
+      for (let r of data.results) {
+        this.list.push(r);
+      }
+
+      this.list = this.order(this.list);
+      index = index + 1;
+
+      if (index < this.cadenas.length) {
+        this.getList(index++);
+      } else {
+        return;
+      }
+
+
+    });
+  }
+
+
+  order(array: Array < any > ): Array < any > {
+    console.log("entrooooo")
+
+    if (!array || array === undefined || array.length === 0) return null;
+
+    array.sort((a: any, b: any) => {
+      if (Number(a.precio) < Number(b.precio)) {
+        return -1;
+      } else if (Number(a.precio) > Number(b.precio)) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    return array;
   }
 
 }
