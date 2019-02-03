@@ -10,7 +10,7 @@ export class BuscadorComponent implements OnInit {
 
   public text: string;
   public list: any[] = [];
-  public cadenas: string[] = ['soriana', 'heb', 'liverpool', 'sears'];
+  public cadenas: string[] = ['soriana', 'heb', 'liverpool', 'sears', 'sanborns', 'bestbuy'];
 
 
   constructor(private searcher: SearchService) {}
@@ -30,6 +30,7 @@ export class BuscadorComponent implements OnInit {
 
   public getList(index: number) {
     this.searcher.search(this.cadenas[index], this.text, 1).subscribe(data => {
+      console.log("Valores encontrados en " + this.cadenas[index])
 
       for (let r of data.results) {
         this.list.push(r);
