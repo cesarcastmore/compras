@@ -7,12 +7,16 @@ import { MenusComponent
 
 import { BuscadorComponent } from './pages/buscador/buscador.component';
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
     path: 'app',
     component: MenusComponent,
     children: [
+      { path: '', redirectTo: '/precios', pathMatch: 'full' },
+
       { path: 'precios', component: BuscadorComponent }
     ]
   }

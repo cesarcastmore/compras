@@ -33,10 +33,11 @@
               "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
               "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
               "node_modules/bootstrap/scss/bootstrap.scss",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": ["node_modules/chart.js/dist/Chart.js",
-              "node_modules/hammerjs/hammer.min.js"
+              "node_modules/hammerjs/hammer.min.js",
+              "node_modules/jquery/dist/jquery.min.js"
             ]
           },
           "configurations":
