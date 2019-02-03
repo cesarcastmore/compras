@@ -1,0 +1,29 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+
+
+img.img-fluid{
+	height: 150px;
+}
+
+
+img.img-fluid.icon {
+	height: 40px;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@include media-breakpoint-up(xs) {}
+
+// Small devices (landscape phones, 576px and up)
+@include media-breakpoint-up(sm) {}
+
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-up(md) {}
+
+
+// Large devices (desktops, 992px and up)
+@include media-breakpoint-up(lg) {}
+
+
+// Extra large devices (large desktops, 1200px and up)
+@include media-breakpoint-up(xl) {}

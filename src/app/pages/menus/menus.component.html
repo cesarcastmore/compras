@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <nav id="sidebar" [ngClass]="{'active': toggle}">
+    <!-- Sidebar Header -->
+    <div class="sidebar-header">
+      <h3>Compras</h3>
+    </div>
+    <!-- Sidebar Links -->
+    <ul class="list-unstyled components">
+      <li class="active"><a href="#">Perfil</a></li>
+      <li><a href="/app/precios">Compras</a></li>
+     
+    </ul>
+  </nav>
+  <div id="content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button type="button" id="sidebarCollapse" class="navbar-btn" [ngClass]="{'navbar-btn active': toggle, 'navbar-btn': !toggle}" (click)="onToggle()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <svg class="svg-inline--fa fa-align-justify fa-w-14" aria-hidden="true" data-prefix="fas" data-icon="align-justify" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+            <path fill="currentColor" d="M0 84V44c0-8.837 7.163-16 16-16h416c8.837 0 16 7.163 16 16v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16zm16 144h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 256h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0-128h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
+          </svg><!-- <i class="fas fa-align-justify"></i> -->
+        </button>
+      </div>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
+</div>

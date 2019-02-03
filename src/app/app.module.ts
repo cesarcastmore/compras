@@ -2,16 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { BuscadorComponent } from './shared/buscador/buscador.component';
-import { ButtonsModule, WavesModule, CardsFreeModule } from 'angular-bootstrap-md'
+import { BuscadorComponent } from './pages/buscador/buscador.component';
+import { ButtonsModule, WavesModule, CardsFreeModule, CheckboxModule } from 'angular-bootstrap-md'
 import { HttpModule } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
-import { OrderPipe } from './shared/buscador/order.pipe';
+import { MenusComponent } from './pages/menus/menus.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
     BuscadorComponent,
-    OrderPipe
+    MenusComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule, 
@@ -19,7 +25,9 @@ import { OrderPipe } from './shared/buscador/order.pipe';
     WavesModule,
     CardsFreeModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
+    CheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
