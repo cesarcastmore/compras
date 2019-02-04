@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BuscadorComponent } from './pages/buscador/buscador.component';
 import { ButtonsModule, WavesModule, CardsFreeModule, CheckboxModule } from 'angular-bootstrap-md'
 import { HttpModule } from '@angular/http';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { MenusComponent } from './pages/menus/menus.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -27,7 +27,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     FormsModule,
     AppRoutingModule,
-    CheckboxModule
+    CheckboxModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

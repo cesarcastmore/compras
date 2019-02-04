@@ -3,34 +3,37 @@
   <div class="row">
     <div class="col-12 col-md-3">
       <div class="list-group">
-        <a  class="list-group-item active waves-light" mdbWavesEffect>
+        <a  class="list-group-item waves-light" mdbWavesEffect [ngClass]="{'active': filtro == 'cadena'}" (click)="filtro='cadena'">
     Tiendas
   </a>
-        <a  class="list-group-item list-group-item-action waves-light" mdbWavesEffect>Filtros</a>
+        <a  class="list-group-item list-group-item-action waves-light" mdbWavesEffect [ngClass]="{'active': filtro == 'orden'}" (click)="filtro='orden'">Filtros</a>
       </div>
-      <mdb-card style="height: 100vh">
-        <mdb-card-body>
+      <mdb-card style="height: 100vh" *ngIf="filtro=='cadena'">
+        <mdb-card-body [formGroup]="optionCadenasForm">
           Supermercados
           <ul>
             <li>
-              <mdb-checkbox>Soriana</mdb-checkbox>
-              <mdb-checkbox>HEB</mdb-checkbox>
+              <mdb-checkbox formControlName="soriana">Soriana</mdb-checkbox>
+              <mdb-checkbox formControlName="heb">HEB</mdb-checkbox>
             </li>
           </ul>
-           Departamentales
+          Departamentales
           <ul>
             <li>
-              <mdb-checkbox>Sears</mdb-checkbox>
-              <mdb-checkbox>Sanbors</mdb-checkbox>
+              <mdb-checkbox formControlName="sears">Sears</mdb-checkbox>
+              <mdb-checkbox formControlName="sanborns">Sanbors</mdb-checkbox>
+              <mdb-checkbox formControlName="liverpool">Liverpool</mdb-checkbox>
             </li>
           </ul>
-           Electronica
+          Electronica
           <ul>
             <li>
-              <mdb-checkbox>BestBuy</mdb-checkbox>
+              <mdb-checkbox formControlName="bestbuy">BestBuy</mdb-checkbox>
             </li>
           </ul>
         </mdb-card-body>
+      </mdb-card>
+      <mdb-card style="height: 100vh" *ngIf="filtro=='orden'">
       </mdb-card>
     </div>
     <div class="col-12 col-md-9">
@@ -40,6 +43,11 @@
           <button mdbBtn color="default" outline="true" size="md" class="m-0 px-3 py-2" type="button" id="button-addon2" mdbWavesEffect (click)="find()">Buscar</button>
         </div>
       </div>
+      <div class="row">
+      <div *ngIf="buscando" class="spinner-border" style="margin: auto" role="status">
+        <span class="sr-only">Loading...</span>
+      </div></div>
+      <br>
       <div class="row">
         <div class="col-12 col-md-3" *ngFor="let item of list">
           <mdb-card>

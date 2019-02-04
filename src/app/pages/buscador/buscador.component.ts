@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from './search.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-buscador',
@@ -10,17 +11,45 @@ export class BuscadorComponent implements OnInit {
 
   public text: string;
   public list: any[] = [];
-  public cadenas: string[] = ['soriana', 'heb', 'liverpool', 'sears', 'sanborns', 'bestbuy'];
+  public cadenas: string[] = [];
+  public filtro: string= 'cadena';
+  public buscando: boolean=false;
+
+  public optionCadenasForm: FormGroup;
 
 
-  constructor(private searcher: SearchService) {}
+  constructor(private searcher: SearchService) {
+    this.optionCadenasForm = new FormGroup({
+      soriana: new FormControl(true),
+      heb: new FormControl(true),
+      liverpool: new FormControl(true),
+      sears: new FormControl(true),
+      sanborns: new FormControl(true),
+      bestbuy: new FormControl(true),
+
+    })
+
+  }
 
   ngOnInit() {
 
   }
 
   public find() {
-    this.list=[];
+
+    this.buscando=true;
+    this.cadenas=[];
+
+    for(let attr in this.optionCadenasForm.value){
+      if(this.optionCadenasForm.value[attr]){
+        this.cadenas.push(attr);
+
+      }
+    }
+
+
+
+    this.list = [];
 
     this.getList(0);
 
@@ -30,7 +59,6 @@ export class BuscadorComponent implements OnInit {
 
   public getList(index: number) {
     this.searcher.search(this.cadenas[index], this.text, 1).subscribe(data => {
-      console.log("Valores encontrados en " + this.cadenas[index])
 
       for (let r of data.results) {
         this.list.push(r);
@@ -42,6 +70,7 @@ export class BuscadorComponent implements OnInit {
       if (index < this.cadenas.length) {
         this.getList(index++);
       } else {
+        this.buscando=false;
         return;
       }
 
@@ -51,7 +80,6 @@ export class BuscadorComponent implements OnInit {
 
 
   order(array: Array < any > ): Array < any > {
-    console.log("entrooooo")
 
     if (!array || array === undefined || array.length === 0) return null;
 
